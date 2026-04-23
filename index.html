@@ -11,8 +11,9 @@
 </head>
 <body>
     <header>
-        <h3 id="textNaglowek">Sebastian Bednarz - DZIKU</h3>
+        <h2 id="textNaglowek">Sebastian Bednarz - DZIKU</h2>
         <nav>
+            <button id="zmianaTrybu">Dark Mode</button>
             <ul id="listaNav">
                 <li><a href="">Home</a></li>
                 <li><a href="">About Me</a></li>
@@ -20,5 +21,19 @@
             </ul>
         </nav>
     </header>
+    <div class="contenerWelcome">
+        <section id="textWelcome">
+            <h1>Welcome, to my first portfolio!</h1>
+            <h2>My name is Sebastian, and im learning to be a FrontEnd Developer.</h2>
+        </section>
+        <img src="zdjecieMnie0.png" alt="Me :)">
+    </div>
+    <script>
+        let btnTryb = document.getElementById('zmianaTrybu');
+
+        btnTryb.addEventListener("click", function(){
+            btnTryb.classList.add('btnChangeLight');
+        });
+    </script>
 </body>
 </html>
