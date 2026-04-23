@@ -10,14 +10,14 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <header id="header">
         <h2 id="textNaglowek">Sebastian Bednarz - DZIKU</h2>
-        <nav>
+        <nav id="nav">
             <button id="zmianaTrybu">Dark Mode</button>
             <ul id="listaNav">
-                <li><a href="">Home</a></li>
-                <li><a href="">About Me</a></li>
-                <li><a href="">My Path</a></li>
+                <li><a href="" id="menuLista">Home</a></li>
+                <li><a href="" id="menuLista">About Me</a></li>
+                <li><a href="" id="menuLista">My Path</a></li>
             </ul>
         </nav>
     </header>
@@ -30,9 +30,27 @@
     </div>
     <script>
         let btnTryb = document.getElementById('zmianaTrybu');
+        let header = document.getElementById('header');
+        //const menuLista = document.querySelectorAll('nav ul li a');
 
         btnTryb.addEventListener("click", function(){
-            btnTryb.classList.add('btnChangeLight');
+            if(btnTryb.classList.contains('btnDark')){
+                btnTryb.classList.remove('btnDark');
+                document.body.classList.remove('dark');
+                header.classList.remove('dark');
+                //menuLista.forEach(link=>{
+                //    link.style.color = "black";
+                //});
+            } else {
+                btnTryb.classList.add('btnDark');
+                document.body.classList.add('dark');
+                header.classList.add('dark');
+                //menuLista.classList.add('dark');
+                //menuLista.forEach(link=>{
+                //    link.style.color = "white";
+                //});
+            }
+            
         });
     </script>
 </body>
