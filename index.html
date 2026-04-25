@@ -15,32 +15,48 @@
         <nav id="nav">
             <button id="zmianaTrybu">Dark Mode</button>
             <ul id="listaNav">
-                <li><a href="" id="menuLista">Home</a></li>
-                <li><a href="" id="menuLista">About Me</a></li>
-                <li><a href="" id="menuLista">My Path</a></li>
+                <li><a href="home">Home</a></li>
+                <li><a href="">About Me</a></li>
+                <li><a href="">My Path</a></li>
             </ul>
         </nav>
     </header>
-    <div class="contenerWelcome">
+    <div class="contenerWelcome" id="home">
         <section id="textWelcome">
             <h1>Welcome, to my first portfolio!</h1>
             <h2>My name is Sebastian, and i`m learning to be a FrontEnd Developer.</h2>
         </section>
         <img src="zdjecieMnie0.png" alt="Me :)">
     </div>
+    <div class="aboutMe" id="aboutMe">
+        <section id="textAbout">
+            <h1>Little Info `bout me</h1>
+            <h3>So its started back in...</h3>
+        </section>
+        <ul id="timeLine">
+            <li class="bold"><strong>2023 </strong>Start of my journey</li>
+            <li>I got to know coding in primary school (basic python i dont remember any of it)</li>
+            <li>I got into web development and specially HTML and CSS</li>
+            <li>Started to do some shitty projects</li>
+            <li class="bold"><strong>2024-2025 </strong>Started to take it seriously</li>
+            <li>I decided to risk it and go to a coding school</li>
+            <li>In my first year at the school i learned a lot of HTML and CSS</li>
+            <li>In my second year i started learning JavaScript and PHP</li>
+            <li class="bold"><strong>2025-2026 </strong>Besides school</li>
+            <li>I realised that I wanted to pursue a career in FrontEnd development but i couldn`t really learn it in school</li>
+            <li>So i started learning on my own</li>
+            <li>Who knows whats next</li>
+        </ul>
+    </div>
     <script>
         let btnTryb = document.getElementById('zmianaTrybu');
         let header = document.getElementById('header');
-        //const menuLista = document.querySelectorAll('nav ul li a');
 
         btnTryb.addEventListener("click", function(){
             if(btnTryb.classList.contains('btnDark')){
                 btnTryb.classList.remove('btnDark');
                 document.body.classList.remove('dark');
                 header.classList.remove('dark');
-                //menuLista.forEach(link=>{
-                //    link.style.color = "black";
-                //});
                 const allElements = document.querySelectorAll('*');
                 allElements.forEach(el =>{
                     el.classList.remove('dark');
@@ -49,10 +65,6 @@
                 btnTryb.classList.add('btnDark');
                 document.body.classList.add('dark');
                 header.classList.add('dark');
-                //menuLista.classList.add('dark');
-                //menuLista.forEach(link=>{
-                //    link.style.color = "white";
-                //});
                 const allElements = document.querySelectorAll('*');
                 allElements.forEach(el =>{
                     el.classList.add('dark');
@@ -60,6 +72,27 @@
             }
             
         });
+        // Tworzymy obserwator widoczności
+        // Obserwator widoczności elementu
+        const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            // Dodaj klasę animacji, gdy element jest widoczny
+            entry.target.classList.add('animate');
+            } else {
+            // Usuń klasę, gdy element znika z widoku
+            entry.target.classList.remove('animate');
+            }
+        });
+        }, { threshold: 0.2 }); // 20% widoczności
+
+        // Obserwuj element .aboutMe
+        const aboutMeSection = document.querySelector('.aboutMe');
+        if (aboutMeSection) {
+        observer.observe(aboutMeSection);
+        }
+
+
     </script>
 </body>
 </html>

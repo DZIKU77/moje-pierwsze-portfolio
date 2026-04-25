@@ -2,8 +2,30 @@ body{
     background: white;
     padding: 0;
     margin: 0;
+    margin-bottom: -5vw;
     font-family: Fauna One, Arial, Helvetica;
     transition: 1s;
+    box-shadow: 
+        inset 20px 0 40px rgba(255, 0, 0, 0.8),   /* lewa */
+        inset -20px 0 40px rgba(47, 0, 255, 0.8); /* prawa */
+    animation: pulse 3s infinite;
+}
+@keyframes pulse {
+    0% {
+        box-shadow: 
+            inset 20px 0 40px rgba(255, 0, 0, 0.8),   /* lewa */
+            inset -20px 0 40px rgba(47, 0, 255, 0.8); /* prawa */
+    }
+    50% {
+        box-shadow: 
+            inset 20px 0 40px rgba(255, 0, 0, 0.4),   /* lewa */
+            inset -20px 0 40px rgba(47, 0, 255, 0.4); /* prawa */
+    }
+    100% {
+        box-shadow: 
+            inset 20px 0 40px rgba(255, 0, 0, 0.8),   /* lewa */
+            inset -20px 0 40px rgba(47, 0, 255, 0.8); /* prawa */
+    }
 }
 
 /* Nawigacja */
@@ -17,6 +39,15 @@ header{
     background-color: #fff;
     box-shadow: 0 0 3px 3px rgb(226, 166, 166);
     animation: pierwszaAnimacja 3s infinite;
+    background: rgba(255, 255, 255, 0.08); /* półprzezroczyste */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(22px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+
+    z-index: 1000;
 }
 
 @keyframes pierwszaAnimacja{
@@ -57,17 +88,22 @@ nav ul li a:hover::after{
 }
 
 button#zmianaTrybu{
-    border: 0;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    padding: 15px;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.45);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.25);
+    color: black;
+    padding: 15px 24px;
     height: auto;
-    transition: 0.5s ease-out;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 button#zmianaTrybu:hover{
-    padding: 17px;
+    transform: translateY(-1px);
     cursor: pointer;
+    background: rgba(255,255,255,0.32);
 }
 
 /* Sekcja Główna */
@@ -76,6 +112,7 @@ button#zmianaTrybu:hover{
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
+    margin-bottom: 15vh;
 }
 
 .contenerWelcome img{
@@ -83,15 +120,63 @@ button#zmianaTrybu:hover{
     width: 40vw;
     object-fit: cover;
     object-position: left top;
+    position:static;
 }
 
 /* Klasy do trybu ciemnego*/
 #zmianaTrybu.btnDark{
-    background-color: white;
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.55);
     color: black;
 }
 
 .dark{
     background-color: black;
     color: white;
+}
+
+
+/* Sekcja O mnie */
+/* Początkowy stan sekcji */
+.aboutMe {
+  margin: 100px auto;
+  padding: 4vw;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(50px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+
+/* Klasa uruchamiająca animację */
+.aboutMe.animate {
+  animation: fadeUp 1s ease-out forwards;
+}
+
+/* Definicja animacji */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aboutMe ul{
+    list-style: none;
+    gap: 20px;
+}
+.aboutMe li{
+    margin-bottom: 5%;
+}
+.aboutMe li::before{
+    content: "•";
+    margin-right: 2%;
+}
+
+.aboutMe li.bold::before{
+    content: "";
 }
