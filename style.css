@@ -283,6 +283,7 @@ footer{
     border-top: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
     margin-bottom: -10vh;
+    font-size: 10px;
 }
 
 footer a{
