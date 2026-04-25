@@ -8,7 +8,8 @@ body{
     box-shadow: 
         inset 20px 0 40px rgba(255, 0, 0, 0.8),   /* lewa */
         inset -20px 0 40px rgba(47, 0, 255, 0.8); /* prawa */
-    animation: pulse 3s infinite;
+    animation: pulse 0.81s ease-in-out infinite;
+    padding-bottom: 10vh;
 }
 @keyframes pulse {
     0% {
@@ -28,6 +29,36 @@ body{
     }
 }
 
+.overlay{
+    height: 100%;
+    overflow: hidden;
+}
+/* przycisk na środku */
+#introBtn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 12px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255,255,255,0.15);
+    color: black;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 2000;
+}
+
+#introBtn:hover {
+    transform: scale(1.05);
+}
+
 /* Nawigacja */
 header{
     display: flex;
@@ -35,7 +66,7 @@ header{
     top: 0;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 35px;
+    padding: 40px 70px;
     background-color: #fff;
     box-shadow: 0 0 3px 3px rgb(226, 166, 166);
     animation: pierwszaAnimacja 3s infinite;
@@ -113,6 +144,8 @@ button#zmianaTrybu:hover{
     align-items: center;
     padding: 20px 30px;
     margin-bottom: 15vh;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .contenerWelcome img{
@@ -130,8 +163,12 @@ button#zmianaTrybu:hover{
     color: black;
 }
 
-.dark{
+.bodyDark{
     background-color: black;
+    color: white;
+}
+
+.dark{
     color: white;
 }
 

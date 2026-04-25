@@ -9,15 +9,22 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="overlay">
+    <button id="introBtn" onclick="document.getElementById('bgm').play()">
+    Get into my world!
+</button>
+
+<audio id="bgm" loop>
+    <source src="yt_UEJTaReI1ls_320.mp3" type="audio/mpeg">
+</audio>
     <header id="header">
         <h2 id="textNaglowek">Sebastian Bednarz - DZIKU</h2>
         <nav id="nav">
             <button id="zmianaTrybu">Dark Mode</button>
             <ul id="listaNav">
-                <li><a href="home">Home</a></li>
-                <li><a href="">About Me</a></li>
-                <li><a href="">My Path</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#aboutMe">About Me</a></li>
+                <li><a href="#myPath">My Path</a></li>
             </ul>
         </nav>
     </header>
@@ -55,7 +62,7 @@
         btnTryb.addEventListener("click", function(){
             if(btnTryb.classList.contains('btnDark')){
                 btnTryb.classList.remove('btnDark');
-                document.body.classList.remove('dark');
+                document.body.classList.remove('bodyDark');
                 header.classList.remove('dark');
                 const allElements = document.querySelectorAll('*');
                 allElements.forEach(el =>{
@@ -63,8 +70,8 @@
                 });
             } else {
                 btnTryb.classList.add('btnDark');
-                document.body.classList.add('dark');
-                header.classList.add('dark');
+                document.body.classList.add('bodyDark');
+                header.classList.remove('dark');
                 const allElements = document.querySelectorAll('*');
                 allElements.forEach(el =>{
                     el.classList.add('dark');
@@ -92,7 +99,12 @@
         observer.observe(aboutMeSection);
         }
 
-
+        document.getElementById('introBtn').addEventListener('click', function() {
+            this.style.display = 'none'; // Ukryj przycisk po kliknięciu
+            document.body.classList.remove('overlay'); // Usuń klasę nakładki, aby pokazać zawartość
+            document.getElementById('bgm').play(); // Odtwórz muzykę
+            document.getElementById('bgm').volume = 0.5; // Ustaw głośność muzyki
+        });
     </script>
 </body>
 </html>
